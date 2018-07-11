@@ -57,12 +57,6 @@ All formula number were given according to original paper. please look that pape
 
 * Step 12. Show last updated phi and finish algorithm. Following map shows the phi matrix in some certain iteration.
 
-
-![Alt Text](Outputs/bone.gif)
-![Alt Text](Outputs/femur.gif)
-![Alt Text](Outputs/capeverde.gif)
-![Alt Text](Outputs/eigg.gif)
-
 ## Results
 
 The method has 8 parameters.  The most important parameter are; mu (μ), lambda  ( λ) and alfa (α) which are shown coefficient of three different components of energy function as regularization term, length term and area term respectively. This params are determined by inventor as mu=0.2, lambda=5 and alfa=-3. Basically this params shows which component is how important in our energy function. To minimize the energy function means, to minimize the sum of this components. Actually we should minimize both of this three component together. In literature it means multi-objective minimization. But to implement multi-objective minimization, we generally rewrite the function as sum of this objectives with some coefficient and this coefficient shows how important that concerned objective. If we change this coefficient than our final results might be different. 
@@ -72,6 +66,26 @@ As a results to adjust these lambda, alfa and mu coefficients are the fact of tr
 
 Somehow epsilon (ε) and c0 parameters are belong to each other. Since c0 params shows us how many different level we use in level set function. For example in our case it is 2. It means our level set is in range of [-2 +2] whose zero set is the border of the objects. Epsilon is the parameter of Dirac and Heaviside function. It is important because the method does not evaluate the border with strict threshold. For example in our case, we do not say the value bigger than 0 is out of object and the value less than zero is the object region. Instead of this evaluation we use some epsilon threshold. For instance we used epsilon as 1.5, it means the value bigger than 1.5 is absolutely out of object and the value less than -1.5 is absolutely object region. But the value in range of [-1.5 1.5] should be evaluate the function which is used in the formula of energy function. As a results we do not select c0 and epsilon independently. Epsilon should be less than c0 and those have effect on the results especially how the results change in every single iteration. To keep the method more stabilize, we do not changed these value and used them as c0=2 and epsilon=1.5 as the value described in the paper.
 In our attempts the params which we change are just maxiter, sigma and timestep values. Maxiter is the number of iteration that the algorithm has to be applied till the end. Since the method finds the results step by step we need to define how many iteration the method should apply. This number depends on the input image and given initial area. But generally we need around 1000 iteration when the timestep is equal 1. Timestep is the time resolution of numeric optimization. Basically, it is the step length in gradient descent algorithm. There is not any analytic method to define it, we should select it with empiric manner. The smaller value the stabilizer results but also the longer time consumption. If we use timestep=5, then we can reach desired result with lesser iteration. Generally these two parameters has not effect on the accuracy of the result if we implement enough number of iteration under certain timestep.
+
+The first example on medical image. We selected parameters as follows; mu=0.2, alfa=-3, lambda=5, epsilon=1.5, c0=2,maxiter=1201 and sigma=3. To run that demo please run following command on Matlab command window
+```matlab
+> bone_segmentation
+```
+
+![Alt Text](Outputs/bone.gif)
+
+Second example is on medical image too. We changed just sigma=2.0 and maxiter=1001. To run that demo please run following command
+```matlab
+> femur_segmentation
+```
+![Alt Text](Outputs/femur.gif)
+
+
+![Alt Text](Outputs/capeverde.gif)
+![Alt Text](Outputs/eigg.gif)
+
+
+
 
 
 ## Reference
