@@ -80,11 +80,17 @@ Second example is on medical image too. We changed just sigma=2.0 and maxiter=10
 ```
 ![Alt Text](Outputs/femur.gif)
 
-The next two examples are on maps. The following image is one island image which was taken with aerial imaging techniques. In this example initial region the last finded region is not island. Instead of island we set the rest of the image is –c0 as desired region and inside the initial rectangle as c0 as non-object region. At the last iteration method find the all the sea region in the image, so rest of the sea region is the island region. In this example we used sigma=2.0, maxiter=601 and timestep=5. As you can see, since we used higher values timestep, method find the result in less iteration.
+The next two examples are on maps. The following image is one island image which was taken with aerial imaging techniques. In this example initial region the last finded region is not island. Instead of island we set the rest of the image is –c0 as desired region and inside the initial rectangle as c0 as non-object region. At the last iteration method find the all the sea region in the image, so rest of the sea region is the island region. In this example we used sigma=2.0, maxiter=601 and timestep=5. As you can see, since we used higher values timestep, method find the result in less iteration. To run that demo please run following command
+```matlab
+> eigg_segmentation
+```
 
 ![Alt Text](Outputs/eigg.gif)
 
-The last example is on multi island map, so we should find all island border. This example is the same with previous one. The desired object according to method is not island but it is sea. So , we set the inside of the initial rectangle with c0 and out of the rectangle with –c0. In this run we used sigma=1.0, maxiter=801 and timestep=3. Since we use relatively big timestep out method converge the final result faster. 
+The last example is on multi island map, so we should find all island border. This example is the same with previous one. The desired object according to method is not island but it is sea. So , we set the inside of the initial rectangle with c0 and out of the rectangle with –c0. In this run we used sigma=1.0, maxiter=801 and timestep=3. Since we use relatively big timestep out method converge the final result faster. To run that demo please run following command
+```matlab
+> capeverde_segmentation
+```
 
 ![Alt Text](Outputs/capeverde.gif)
 
